@@ -777,6 +777,16 @@ h1 span {
   gap: 18px;
 }
 
+.project-case {
+  position: relative;
+}
+
+.project-case + .project-case {
+  margin-top: 54px;
+  padding-top: 54px;
+  border-top: 1px solid rgba(188, 225, 209, .78);
+}
+
 .project-card,
 .workflow-panel {
   padding: 24px;
@@ -826,6 +836,92 @@ h1 span {
 .heylth-mark svg {
   width: 40px;
   height: 40px;
+}
+
+.ceo-mark {
+  width: 72px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 72% 28%, rgba(255, 255, 255, .35), transparent 28%),
+    linear-gradient(135deg, #3a1d78 0%, #7c3aed 50%, #f59e0b 100%);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(245, 158, 11, .24);
+}
+
+.ceo-mark span {
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.project-case-ceo {
+  --ceo-red: #f04438;
+  --ceo-orange: #f59e0b;
+  --ceo-purple: #5b2bbf;
+}
+
+.ceo-card,
+.project-case-ceo .project-showcase,
+.project-case-ceo .project-details article,
+.project-case-ceo .stack-strip .stack-card {
+  border-color: #f4d5c7;
+}
+
+.ceo-card::before,
+.project-case-ceo .workflow-panel::before,
+.project-case-ceo .project-details article::before,
+.project-case-ceo .stack-strip .stack-card::before {
+  background: linear-gradient(90deg, var(--ceo-red), var(--ceo-orange), rgba(245, 158, 11, 0));
+}
+
+.project-case-ceo .project-tags span,
+.project-case-ceo .skill-list span {
+  border-color: rgba(245, 158, 11, .22);
+  background: #fff6ea;
+  color: #8a3b14;
+}
+
+.project-case-ceo .project-links a:hover {
+  border-color: var(--ceo-orange);
+  background: #fff6ea;
+}
+
+.project-case-ceo .project-metrics strong,
+.project-case-ceo .project-details span,
+.project-case-ceo .stack-strip strong,
+.project-case-ceo .section-label {
+  color: #a33c20;
+}
+
+.ceo-workflow .workflow::after {
+  background: var(--ceo-red);
+  box-shadow: 0 0 18px rgba(240, 68, 56, .38);
+}
+
+.ceo-workflow .workflow-step span {
+  color: #a33c20;
+}
+
+.ceo-showcase {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(245, 158, 11, .18), transparent 34%),
+    radial-gradient(circle at 12% 86%, rgba(91, 43, 191, .08), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(255, 249, 239, .98));
+}
+
+.ceo-showcase .phone-shot {
+  border-color: rgba(244, 213, 199, .96);
+  box-shadow: 0 24px 54px rgba(116, 48, 20, .12);
+}
+
+.ceo-showcase .phone-shot span {
+  border-color: rgba(244, 213, 199, .9);
+  color: #a33c20;
 }
 
 .project-brand h3 {
@@ -1253,6 +1349,17 @@ h1 span {
 .tech-mark.vercel { background: #111; }
 .tech-mark.ngrok { background: #1f1f1f; }
 .tech-mark.docker { background: #2496ed; }
+.tech-mark.cron { background: #f59e0b; color: #2d1600; }
+.tech-mark.meta { background: #0866ff; }
+.tech-mark.google { background: linear-gradient(135deg, #4285f4, #34a853, #fbbc04, #ea4335); }
+.tech-mark.workspace { background: #10b981; }
+.tech-mark.ppt { background: #d24726; }
+.tech-mark.test { background: #6d28d9; }
+.tech-mark.webhook { background: #f04438; }
+.tech-mark.env { background: #64748b; }
+.tech-mark.cache { background: #7c3aed; }
+.tech-mark.api { background: #0f172a; }
+.tech-mark.deploy { background: #0284c7; }
 
 .skill-grid {
   display: grid;

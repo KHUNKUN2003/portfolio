@@ -172,10 +172,11 @@
 
     <section class="section-shell projects-section" id="projects" aria-labelledby="projects-title">
       <div class="section-heading" data-reveal>
-        <p>Featured Project</p>
-        <h2 id="projects-title">HEYLTH, LINE OA health-tracking system</h2>
+        <p>Featured Projects</p>
+        <h2 id="projects-title">Selected systems built for real business workflows</h2>
       </div>
 
+      <div class="project-case">
       <div class="project-layout">
         <article class="project-card" data-reveal>
           <div class="project-brand">
@@ -317,6 +318,151 @@
             <li><span class="tech-mark docker">Do</span>Docker</li>
           </ul>
         </div>
+      </div>
+      </div>
+
+      <div class="project-case project-case-ceo">
+      <div class="project-layout">
+        <article class="project-card ceo-card" data-reveal>
+          <div class="project-brand">
+            <div class="ceo-mark">
+              <span>CEO</span>
+            </div>
+            <div>
+              <h3>CEO Partner</h3>
+              <p>AI business assistant for daily Meta and LINE reports</p>
+            </div>
+          </div>
+          <p>
+            ระบบ backend automation สำหรับเจ้าของธุรกิจ ดึงข้อมูล Meta Page และโฆษณาของวันก่อนหน้า
+            ให้ AI วิเคราะห์เป็นรายงานเชิงปฏิบัติ ส่งสรุปรายวันผ่าน LINE และตอบคำถามเจ้าของร้านด้วยบริบทธุรกิจล่าสุด
+          </p>
+          <div class="project-tags">
+            <span>Meta Insights</span>
+            <span>Daily LINE Report</span>
+            <span>AI Chat Context</span>
+            <span>Neon Storage</span>
+            <span>Google Workspace Tools</span>
+          </div>
+          <div class="project-links" aria-label="CEO Partner project links">
+            <a href="https://github.com/KHUNKUN2003/CEO-Partner" target="_blank" rel="noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-6.5.1-1.3-.4-2.5-1.3-3.5.1-.3.6-1.7-.1-3.5 0 0-1-.3-3.4 1.3a11.6 11.6 0 0 0-6.2 0C6.6.7 5.6 1 5.6 1c-.7 1.8-.2 3.2-.1 3.5A5 5 0 0 0 4.2 8C4.2 12.5 7.2 14.5 10.2 14.5A4.8 4.8 0 0 0 9 18v4"/><path d="M9 18c-4.5 2-5-2-7-2"/></svg>
+              View GitHub Repo
+            </a>
+          </div>
+          <div class="project-metrics" aria-label="CEO Partner project highlights">
+            <div>
+              <strong>08:00</strong>
+              <span>Daily report schedule</span>
+            </div>
+            <div>
+              <strong>Meta API</strong>
+              <span>Page, ads, inbox context</span>
+            </div>
+            <div>
+              <strong>Gemini</strong>
+              <span>Analysis and tool calling</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="workflow-panel ceo-workflow" data-reveal>
+          <h3>Automation Flow</h3>
+          <div class="workflow">
+            <div class="workflow-step"><span>01</span><strong>Meta</strong><small>Fetch yesterday data</small></div>
+            <div class="workflow-step"><span>02</span><strong>Store</strong><small>Save snapshot in Neon</small></div>
+            <div class="workflow-step"><span>03</span><strong>AI</strong><small>Generate action report</small></div>
+            <div class="workflow-step"><span>04</span><strong>LINE</strong><small>Push daily brief</small></div>
+            <div class="workflow-step"><span>05</span><strong>Chat</strong><small>Answer with latest context</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-showcase ceo-showcase" aria-label="CEO Partner product screenshots" data-reveal>
+        <div class="showcase-copy">
+          <p class="section-label">Product Screens</p>
+          <h3>ผู้ช่วยธุรกิจที่คุยผ่าน LINE ได้เหมือนแชทจริง</h3>
+          <p>
+            ตัวอย่างประสบการณ์ของ CEO Partner ตั้งแต่หน้า LINE OA,
+            รายงานผลโฆษณารายวัน ไปจนถึงแชทถามงานที่ควรจัดการต่อในวันนั้น
+          </p>
+        </div>
+        <div class="phone-gallery">
+          <figure class="phone-shot phone-shot-main">
+            <span>LINE OA Profile</span>
+            <button type="button" data-lightbox-src="assets/ceo-partner-line-oa.svg" data-lightbox-title="CEO Partner LINE OA Profile" aria-label="Open CEO Partner LINE OA profile screenshot">
+              <img src="assets/ceo-partner-line-oa.svg" alt="CEO Partner LINE Official Account profile screen">
+            </button>
+          </figure>
+          <figure class="phone-shot">
+            <span>Daily Report</span>
+            <button type="button" data-lightbox-src="assets/ceo-partner-report.svg" data-lightbox-title="CEO Partner Daily Report" aria-label="Open CEO Partner daily report screenshot">
+              <img src="assets/ceo-partner-report.svg" alt="CEO Partner daily performance report in LINE chat">
+            </button>
+          </figure>
+          <figure class="phone-shot">
+            <span>AI Chat Reply</span>
+            <button type="button" data-lightbox-src="assets/ceo-partner-chat.svg" data-lightbox-title="CEO Partner AI Chat Reply" aria-label="Open CEO Partner AI chat reply screenshot">
+              <img src="assets/ceo-partner-chat.svg" alt="CEO Partner AI reply in LINE chat">
+            </button>
+          </figure>
+        </div>
+      </div>
+
+      <div class="project-details" aria-label="CEO Partner short project details" data-reveal>
+        <article>
+          <span>บทบาทของผม</span>
+          <p>ออกแบบและพัฒนา backend automation, LINE webhook, Meta data pipeline, AI prompt/context layer, Neon storage และ scheduler สำหรับรายงานรายวัน.</p>
+        </article>
+        <article>
+          <span>ฟีเจอร์หลัก</span>
+          <p>ดึง Meta Page/ad insights, สร้างรายงานด้วย AI, ส่ง LINE report อัตโนมัติ, ตอบแชทด้วยข้อมูลล่าสุด และเรียกใช้ Google Workspace tools ได้.</p>
+        </article>
+        <article>
+          <span>ความท้าทายทางเทคนิค</span>
+          <p>จัดการข้อมูลจากหลาย API, เก็บ snapshot แบบ append-only, ทำ fallback เมื่อ Meta หรือ AI มีปัญหา และรักษา webhook signature ให้ปลอดภัย.</p>
+        </article>
+        <article>
+          <span>ผลลัพธ์</span>
+          <p>ได้ผู้ช่วยธุรกิจบน LINE ที่สรุป performance, แนะนำ action ที่ควรทำ และช่วยเจ้าของร้านตัดสินใจจากข้อมูลโฆษณาและลูกค้าได้เร็วขึ้น.</p>
+        </article>
+      </div>
+
+      <div class="stack-strip" aria-label="CEO Partner stack" data-reveal>
+        <div class="stack-card">
+          <strong>Backend</strong>
+          <ul class="tech-logo-list" aria-label="CEO Partner backend technologies">
+            <li><span class="tech-mark nodejs">N</span>Node.js</li>
+            <li><span class="tech-mark express">Ex</span>Express</li>
+            <li><span class="tech-mark cron">Cr</span>node-cron</li>
+            <li><span class="tech-mark line">LA</span>LINE API</li>
+            <li><span class="tech-mark meta">M</span>Meta API</li>
+            <li><span class="tech-mark gemini">G</span>Gemini API</li>
+          </ul>
+        </div>
+        <div class="stack-card">
+          <strong>Data & AI</strong>
+          <ul class="tech-logo-list" aria-label="CEO Partner data and AI technologies">
+            <li><span class="tech-mark postgres">Pg</span>PostgreSQL</li>
+            <li><span class="tech-mark neon">Ne</span>Neon</li>
+            <li><span class="tech-mark google">Go</span>Google Search</li>
+            <li><span class="tech-mark workspace">Ws</span>Workspace Tools</li>
+            <li><span class="tech-mark ppt">Pt</span>PptxGenJS</li>
+            <li><span class="tech-mark sql">SQL</span>schema.sql</li>
+          </ul>
+        </div>
+        <div class="stack-card">
+          <strong>Reliability</strong>
+          <ul class="tech-logo-list" aria-label="CEO Partner reliability practices">
+            <li><span class="tech-mark test">T</span>node:test</li>
+            <li><span class="tech-mark webhook">Wh</span>Webhook verify</li>
+            <li><span class="tech-mark env">Env</span>dotenv config</li>
+            <li><span class="tech-mark cache">Ca</span>Context cache</li>
+            <li><span class="tech-mark api">API</span>REST endpoints</li>
+            <li><span class="tech-mark deploy">Dp</span>ngrok deploy test</li>
+          </ul>
+        </div>
+      </div>
       </div>
     </section>
 

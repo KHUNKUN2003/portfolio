@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1600" viewBox="0 0 750 1600" role="img" aria-labelledby="title desc">
+  <title id="title">CEO Partner AI chat reply</title>
+  <desc id="desc">A LINE dark-mode chat where CEO Partner answers a business task question.</desc>
+  <rect width="750" height="1600" fill="#111"/>
+  <rect width="750" height="92" fill="#101010"/>
+  <path d="M54 28 24 58l30 30" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="86" y="65" fill="#fff" font-family="Arial, sans-serif" font-size="42" font-weight="800">99+</text>
+  <text x="216" y="65" fill="#fff" font-family="Arial, sans-serif" font-size="42" font-weight="800">CEO Partner</text>
+  <rect x="424" y="110" width="288" height="70" rx="35" fill="#54d95d"/>
+  <text x="462" y="157" fill="#111" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34" font-weight="700">แล้ววันนี้ควรทำอะไรบ้าง</text>
+  <text x="350" y="142" fill="#777" font-family="Arial, sans-serif" font-size="22">Read</text>
+  <text x="350" y="170" fill="#777" font-family="Arial, sans-serif" font-size="22">02:12</text>
+  <circle cx="52" cy="234" r="38" fill="#ff553e"/>
+  <text x="30" y="244" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="900">CEO</text>
+  <rect x="96" y="206" width="594" height="1245" rx="28" fill="#2b2b2b"/>
+  <text x="132" y="266" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">สวัสดีครับ! สำหรับวันนี้ เพื่อให้ร้าน</text>
+  <text x="132" y="314" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">Fulltank Garage ทำงานได้อย่างมี</text>
+  <text x="132" y="362" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">ประสิทธิภาพและเก็บยอดขายได้สูงสุด</text>
+  <text x="132" y="410" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">แอดมินสรุปสิ่งที่ควรทำให้ครับ:</text>
+  <text x="132" y="520" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="36" font-weight="800">1. ตอบแชทลูกค้าค้างตอบด่วนที่สุด</text>
+  <text x="132" y="578" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">มีลูกค้า 2 ท่านที่ทักเข้ามาเมื่อคืน</text>
+  <text x="132" y="626" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">และยังรอคำตอบจากคุณอยู่ครับ</text>
+  <text x="132" y="704" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">คุณ Chane Rachane: ถามถึงรถ</text>
+  <text x="132" y="752" fill="#fff" font-family="Arial, sans-serif" font-size="34">Altis 2014</text>
+  <text x="156" y="824" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">สิ่งที่ต้องทำ: ส่งราคาแนะนำ</text>
+  <text x="156" y="874" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">สำหรับรถเก๋งขนาดกลาง เช่น</text>
+  <text x="184" y="940" fill="#fff" font-family="Arial, sans-serif" font-size="34">1. SolarKey Eco Ceramic</text>
+  <text x="184" y="990" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">ราคาประมาณ 4,500 - 5,500</text>
+  <text x="184" y="1056" fill="#fff" font-family="Arial, sans-serif" font-size="34">2. SolarKey Ultra IR</text>
+  <text x="184" y="1106" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">ราคาประมาณ 6,500</text>
+  <text x="184" y="1172" fill="#fff" font-family="Arial, sans-serif" font-size="34">3. Hi-Kool Beyond Ceramic</text>
+  <text x="184" y="1222" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">ราคาประมาณ 8,500</text>
+  <text x="132" y="1320" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">ทริค: ถามความต้องการเพิ่มว่า</text>
+  <text x="132" y="1370" fill="#fff" font-family="Arial, 'Noto Sans Thai', sans-serif" font-size="34">ชอบฟิล์มใสหรือเข้มกี่เปอร์เซ็นต์</text>
+  <rect x="641" y="1324" width="66" height="74" rx="12" fill="#333"/>
+  <path d="M674 1342v34m0 0 16-16m-16 16-16-16" fill="none" stroke="#bbb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect y="1498" width="750" height="102" fill="#0f0f0f"/>
+  <path d="M36 1548h58m-29-29v58M132 1518h62v62h-62zM238 1518h64v62h-64z" fill="none" stroke="#ddd" stroke-width="5" stroke-linecap="round"/>
+  <rect x="338" y="1518" width="248" height="62" rx="31" fill="#222"/>
+  <text x="410" y="1558" fill="#777" font-family="Arial, sans-serif" font-size="32">Aa</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="2000" viewBox="0 0 1000 2000" role="img" aria-labelledby="title desc">
+  <title id="title">CEO Partner LINE OA profile mockup</title>
+  <desc id="desc">A LINE Official Account profile screen for CEO Partner with an orange campaign banner.</desc>
+  <defs>
+    <linearGradient id="orange" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff4a32"/>
+      <stop offset="1" stop-color="#f6a51f"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#3a1d78"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#381107" flood-opacity=".2"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="2000" fill="#fff"/>
+  <rect y="118" width="1000" height="498" fill="url(#orange)"/>
+  <text x="834" y="82" fill="#111" font-family="Arial, sans-serif" font-size="54" font-weight="700">⋮</text>
+  <path d="M918 41 961 84M961 41 918 84" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+  <rect x="314" y="130" width="400" height="236" rx="16" fill="url(#purple)" filter="url(#shadow)"/>
+  <rect x="348" y="172" width="332" height="148" rx="14" fill="#fff" opacity=".95"/>
+  <polyline points="372,274 427,232 488,255 548,198 635,218" fill="none" stroke="#ff4a32" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="430" cy="232" r="10" fill="#ff4a32"/>
+  <circle cx="488" cy="255" r="10" fill="#ff4a32"/>
+  <circle cx="548" cy="198" r="10" fill="#ff4a32"/>
+  <rect x="584" y="236" width="18" height="54" rx="5" fill="#f59e0b"/>
+  <rect x="615" y="210" width="18" height="80" rx="5" fill="#7c3aed"/>
+  <rect x="646" y="184" width="18" height="106" rx="5" fill="#2563eb"/>
+  <circle cx="214" cy="218" r="54" fill="#fff"/>
+  <text x="185" y="238" fill="#2563eb" font-family="Arial, sans-serif" font-size="70" font-weight="900">f</text>
+  <circle cx="796" cy="224" r="56" fill="#fff"/>
+  <path d="M796 184c31 0 52 28 42 57-5 14-16 26-30 31v24h-24v-24c-14-5-25-17-30-31-10-29 11-57 42-57Z" fill="#f59e0b"/>
+  <circle cx="820" cy="356" r="62" fill="#fff"/>
+  <circle cx="820" cy="356" r="40" fill="#7c3aed"/>
+  <path d="M798 375v-35M820 375v-56M842 375v-76" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="194" cy="386" r="58" fill="#fff"/>
+  <path d="M163 380h42v-42h42v42h42v42h-42v42h-42v-42h-42z" fill="#fff" opacity=".25"/>
+  <path d="M206 340c-23 0-42 18-42 41 0 38 42 68 42 68s42-30 42-68c0-23-19-41-42-41Z" fill="#fff"/>
+  <path d="M180 384h18l8-18 16 38 11-20h17" fill="none" stroke="#ff4a32" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="310" y="482" fill="#fff" stroke="#3a1d78" stroke-width="13" paint-order="stroke" font-family="Arial, sans-serif" font-size="136" font-weight="900">CEO</text>
+  <text x="250" y="588" fill="#fff" stroke="#3a1d78" stroke-width="13" paint-order="stroke" font-family="Arial, sans-serif" font-size="132" font-weight="900">Partner</text>
+  <circle cx="150" cy="752" r="88" fill="url(#orange)"/>
+  <circle cx="150" cy="752" r="68" fill="#fff"/>
+  <text x="94" y="766" fill="#3a1d78" font-family="Arial, sans-serif" font-size="42" font-weight="900">CEO</text>
+  <text x="78" y="806" fill="#f59e0b" stroke="#3a1d78" stroke-width="3" paint-order="stroke" font-family="Arial, sans-serif" font-size="38" font-weight="900">Partner</text>
+  <text x="268" y="734" fill="#0b0b0b" font-family="Arial, sans-serif" font-size="56" font-weight="900">CEO Partner</text>
+  <rect x="600" y="690" width="155" height="64" rx="10" fill="#efefef"/>
+  <text x="616" y="737" fill="#7b7b7b" font-family="Arial, sans-serif" font-size="34">Unverified</text>
+  <text x="268" y="798" fill="#777" font-family="Arial, sans-serif" font-size="38">Friends 2</text>
+  <rect x="42" y="928" width="216" height="100" rx="10" fill="#fff" stroke="#ddd" stroke-width="3"/>
+  <path d="M94 978c0-18 19-32 42-32s42 14 42 32-19 32-42 32c-6 0-12-1-17-3l-25 12 8-21c-5-6-8-12-8-20Z" fill="none" stroke="#111" stroke-width="4"/>
+  <text x="142" y="992" fill="#555" font-family="Arial, sans-serif" font-size="34">Chat</text>
+  <text x="415" y="1448" fill="#999" font-family="Arial, sans-serif" font-size="36">@609cbayx</text>
+  <rect y="1508" width="1000" height="258" fill="#f7f7f7"/>
+  <text x="248" y="1588" fill="#111" font-family="Arial, sans-serif" font-size="44" font-weight="800">Find more official accounts</text>
+  <circle cx="230" cy="1708" r="64" fill="#fff" stroke="#eee"/>
+  <circle cx="500" cy="1708" r="64" fill="#fff" stroke="#eee"/>
+  <circle cx="770" cy="1708" r="64" fill="#fff" stroke="#eee"/>
+  <path d="M205 1680h50v54h-50zM215 1692h30M215 1706h30" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+  <path d="M468 1682h64v48h-64zM482 1704l13 13 26-28" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="760" cy="1698" r="26" fill="none" stroke="#111" stroke-width="8"/><path d="m780 1718 28 28" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+  <rect x="42" y="1811" width="916" height="124" rx="10" fill="#f4433a"/>
+  <text x="430" y="1888" fill="#fff" font-family="Arial, sans-serif" font-size="46" font-weight="800">Chat</text>
+  <text x="592" y="1980" fill="#666" font-family="Arial, sans-serif" font-size="32">Country or region: Thailand</text>
+</svg>
