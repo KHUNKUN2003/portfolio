@@ -20,9 +20,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
   background:
-    radial-gradient(circle at 76% 8%, rgba(16, 185, 129, .16), transparent 30%),
-    linear-gradient(180deg, #ffffff 0%, #f6fbf9 38%, #ffffff 100%);
-  background-size: 140% 140%, 100% 100%;
+    linear-gradient(180deg, #ffffff 0%, #f7fbf9 42%, #ffffff 100%);
+  background-size: 100% 100%;
   animation: body-ambient 18s ease-in-out infinite alternate;
 }
 
@@ -41,11 +40,11 @@ a {
 
 .aurora-mesh {
   inset: -18%;
-  opacity: .52;
+  opacity: .32;
   background:
-    radial-gradient(circle at 72% 16%, rgba(16, 185, 129, .16), transparent 30%),
-    radial-gradient(circle at 18% 62%, rgba(14, 165, 233, .08), transparent 28%),
-    linear-gradient(145deg, rgba(255, 255, 255, .9), transparent 44%, rgba(236, 253, 245, .62));
+    radial-gradient(circle at 50% 18%, rgba(16, 185, 129, .11), transparent 34%),
+    radial-gradient(circle at 50% 68%, rgba(14, 165, 233, .05), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, .92), transparent 48%, rgba(236, 253, 245, .42));
   background-size: 130% 130%, 125% 125%, 100% 100%;
   filter: blur(.2px);
   animation: aurora-mesh 24s ease-in-out infinite alternate;
@@ -107,10 +106,8 @@ a {
 
 .hero-ambient {
   background:
-    radial-gradient(circle at 75% 10%, rgba(16, 185, 129, .22), transparent 34%),
-    radial-gradient(circle at 18% 70%, rgba(14, 165, 233, .1), transparent 28%),
-    linear-gradient(120deg, transparent, rgba(255, 255, 255, .5), transparent);
-  background-size: 120% 120%, 110% 110%, 220% 100%;
+    linear-gradient(120deg, transparent 12%, rgba(236, 253, 245, .38) 46%, transparent 78%);
+  background-size: 220% 100%;
   animation: hero-ambient 12s ease-in-out infinite alternate;
 }
 
@@ -450,7 +447,7 @@ a {
 
 @media (max-width: 640px) {
   .hero-ambient {
-    inset: -24px -16px;
+    inset-block: -24px;
   }
 
   .phone-frame img {
@@ -506,19 +503,19 @@ a {
 
 @keyframes hero-ambient {
   0% {
-    background-position: 0% 0%, 0% 100%, 0% 50%;
+    background-position: 0% 50%;
   }
   100% {
-    background-position: 100% 20%, 30% 0%, 100% 50%;
+    background-position: 100% 50%;
   }
 }
 
 @keyframes body-ambient {
   0% {
-    background-position: 0% 0%, 0% 0%;
+    background-position: 0% 0%;
   }
   100% {
-    background-position: 100% 10%, 0% 0%;
+    background-position: 0% 0%;
   }
 }
 

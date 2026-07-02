@@ -447,7 +447,7 @@ function Reveal({ children, className = "", delay = 0 }) {
 function Hero() {
   return (
     <section id="home" className="relative mx-auto grid min-h-[calc(100vh-80px)] w-[min(1180px,calc(100%-32px))] items-center gap-8 py-10 md:gap-10 md:py-12 lg:grid-cols-[0.95fr_1.05fr]">
-      <motion.div className="hero-ambient pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+      <motion.div className="hero-ambient pointer-events-none absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2" aria-hidden="true" />
       <Reveal>
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/72 px-4 py-2 text-sm font-black text-emerald-700 shadow-lg shadow-emerald-900/5">
           <span className="size-2 rounded-full bg-emerald-500 shadow-[0_0_0_6px_rgba(16,185,129,.12)]" />
