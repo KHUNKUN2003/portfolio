@@ -238,7 +238,8 @@ const accentClass = {
     bgSoft: "bg-emerald-50/35",
     viaSoft: "via-emerald-200",
     lineRun: "via-emerald-500",
-    number: "from-emerald-500 to-teal-600 text-white shadow-emerald-700/20",
+    solid: "bg-emerald-600",
+    numberShadow: "shadow-emerald-700/20",
     tab: "border-emerald-600 bg-emerald-600 text-white shadow-emerald-700/20",
     hover: "hover:bg-emerald-50 hover:text-emerald-700"
   },
@@ -251,7 +252,8 @@ const accentClass = {
     bgSoft: "bg-orange-50/45",
     viaSoft: "via-orange-200",
     lineRun: "via-orange-500",
-    number: "from-orange-500 to-amber-500 text-white shadow-orange-700/20",
+    solid: "bg-orange-500",
+    numberShadow: "shadow-orange-700/20",
     tab: "border-orange-500 bg-orange-500 text-white shadow-orange-700/20",
     hover: "hover:bg-orange-50 hover:text-orange-700"
   },
@@ -264,7 +266,8 @@ const accentClass = {
     bgSoft: "bg-green-50/45",
     viaSoft: "via-green-200",
     lineRun: "via-green-600",
-    number: "from-green-600 to-lime-600 text-white shadow-green-700/20",
+    solid: "bg-green-600",
+    numberShadow: "shadow-green-700/20",
     tab: "border-green-600 bg-green-600 text-white shadow-green-700/20",
     hover: "hover:bg-green-50 hover:text-green-700"
   },
@@ -277,7 +280,8 @@ const accentClass = {
     bgSoft: "bg-sky-50/45",
     viaSoft: "via-sky-200",
     lineRun: "via-sky-500",
-    number: "from-sky-500 to-blue-600 text-white shadow-sky-700/20",
+    solid: "bg-sky-600",
+    numberShadow: "shadow-sky-700/20",
     tab: "border-sky-600 bg-sky-600 text-white shadow-sky-700/20",
     hover: "hover:bg-sky-50 hover:text-sky-700"
   }
@@ -673,6 +677,7 @@ function Metric({ title, text, tone = "emerald" }) {
 function Workflow({ project }) {
   const accent = accentClass[project.accent] ?? accentClass.emerald;
   const reduceMotion = useReducedMotion();
+  const lineDuration = 2.8;
   return (
     <article className={`rounded-[2rem] border ${accent.border} bg-white/84 p-6 shadow-2xl shadow-emerald-950/7`}>
       <h3 className="mb-4 text-xl font-black">System Workflow</h3>
@@ -686,7 +691,22 @@ function Workflow({ project }) {
         </span>
         {project.workflow.map(([title, text], index) => (
           <motion.div key={title} className={`relative grid min-h-20 grid-cols-[54px_1fr] items-center gap-3 rounded-2xl border ${accent.border} ${accent.bgSoft} p-3`} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.06 }}>
-            <span className={`z-10 grid size-12 place-items-center rounded-2xl bg-gradient-to-br font-black shadow-lg ${accent.number}`}>{String(index + 1).padStart(2, "0")}</span>
+            <span className={`relative z-10 grid size-12 overflow-hidden place-items-center rounded-2xl bg-white font-black ${accent.text} shadow-lg ${accent.numberShadow}`}>
+              <span className="relative z-0">{String(index + 1).padStart(2, "0")}</span>
+              <motion.span
+                className={`absolute inset-0 z-10 grid place-items-center text-white ${accent.solid}`}
+                animate={reduceMotion ? { opacity: 0 } : { opacity: [0, 0, 1, 1, 0] }}
+                transition={{
+                  duration: 0.62,
+                  repeat: Infinity,
+                  repeatDelay: lineDuration - 0.62,
+                  delay: 0.14 + index * 0.48,
+                  ease: "easeInOut"
+                }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </motion.span>
+            </span>
             <span><strong className="block font-black">{title}</strong><small className="font-bold text-slate-500">{text}</small></span>
           </motion.div>
         ))}
