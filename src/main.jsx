@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   Activity,
   ArrowUpRight,
@@ -363,7 +363,7 @@ function Reveal({ children, className = "", delay = 0 }) {
 function Hero() {
   return (
     <section id="home" className="relative mx-auto grid min-h-[calc(100vh-80px)] w-[min(1180px,calc(100%-32px))] items-center gap-10 py-12 lg:grid-cols-[0.95fr_1.05fr]">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_10%,rgba(16,185,129,.22),transparent_34%),radial-gradient(circle_at_18%_70%,rgba(14,165,233,.1),transparent_28%)]" />
+      <motion.div className="hero-ambient pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
       <Reveal>
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/72 px-4 py-2 text-sm font-black text-emerald-700 shadow-lg shadow-emerald-900/5">
           <span className="size-2 rounded-full bg-emerald-500 shadow-[0_0_0_6px_rgba(16,185,129,.12)]" />
@@ -377,15 +377,15 @@ function Hero() {
           ผมสร้างเว็บแอปพลิเคชันที่เชื่อม frontend, backend, database และ platform workflow ให้ทำงานร่วมกันได้จริง ตั้งแต่ React UI, Node.js API, PostgreSQL ไปจนถึง LINE LIFF และ AI integration
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-3 font-black text-white shadow-2xl shadow-emerald-500/25 transition hover:-translate-y-1" href="#projects">
+          <MotionLink className="bg-emerald-500 text-white shadow-2xl shadow-emerald-500/25" href="#projects">
             <Sparkles size={18} /> View Projects
-          </a>
-          <a className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white px-5 py-3 font-black shadow-xl shadow-emerald-900/5 transition hover:-translate-y-1" href={asset("assets/RESUME_TH.pdf")} download>
+          </MotionLink>
+          <MotionLink className="border border-emerald-100 bg-white shadow-xl shadow-emerald-900/5" href={asset("assets/RESUME_TH.pdf")} download>
             <Download size={18} /> Download Resume
-          </a>
-          <a className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/70 px-5 py-3 font-black text-emerald-700 transition hover:-translate-y-1" href={asset("assets/RESUME_TH.pdf")} target="_blank" rel="noreferrer">
+          </MotionLink>
+          <MotionLink className="border border-emerald-100 bg-white/70 text-emerald-700" href={asset("assets/RESUME_TH.pdf")} target="_blank" rel="noreferrer">
             <Eye size={18} /> Preview Resume
-          </a>
+          </MotionLink>
         </div>
         <div className="mt-8 flex flex-wrap gap-2">
           {techHighlights.map((item) => <Pill key={item}>{item}</Pill>)}
@@ -398,10 +398,46 @@ function Hero() {
   );
 }
 
+function MotionLink({ children, className = "", ...props }) {
+  return (
+    <motion.a
+      className={`motion-link inline-flex items-center gap-2 rounded-full px-5 py-3 font-black ${className}`}
+      whileHover={{ y: -4, scale: 1.02 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 360, damping: 22 }}
+      {...props}
+    >
+      {children}
+    </motion.a>
+  );
+}
+
 function SystemVisual() {
   const nodes = ["AI", "API", "DB", "PDF", "OTP", "LIFF"];
+  const reduceMotion = useReducedMotion();
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const rotateX = useTransform(pointerY, [-0.5, 0.5], reduceMotion ? [0, 0] : [5, -5]);
+  const rotateY = useTransform(pointerX, [-0.5, 0.5], reduceMotion ? [0, 0] : [-6, 6]);
+
+  const handlePointerMove = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5);
+    pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5);
+  };
+
+  const handlePointerLeave = () => {
+    pointerX.set(0);
+    pointerY.set(0);
+  };
+
   return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/78 p-5 shadow-2xl shadow-emerald-950/10 backdrop-blur-xl md:p-8">
+    <motion.div
+      className="system-visual-card relative overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/78 p-5 shadow-2xl shadow-emerald-950/10 backdrop-blur-xl md:p-8"
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+    >
       <div className="absolute inset-0 bg-[linear-gradient(rgba(6,78,59,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(6,78,59,.06)_1px,transparent_1px)] bg-[size:34px_34px]" />
       <div className="relative grid gap-5 md:grid-cols-[1fr_230px]">
         <article className="rounded-3xl border border-emerald-100 bg-white/88 p-6 shadow-xl shadow-emerald-950/5">
@@ -418,9 +454,9 @@ function SystemVisual() {
         <div className="relative mx-auto grid size-56 place-items-center rounded-full border border-emerald-200 bg-emerald-50/40">
           <div className="absolute inset-10 rounded-full border border-emerald-200" />
           <div className="absolute inset-20 rounded-full border border-emerald-200" />
-          <div className="z-10 grid size-20 place-items-center rounded-3xl bg-slate-950 text-white shadow-2xl">
+          <motion.div className="z-10 grid size-20 place-items-center rounded-3xl bg-slate-950 text-white shadow-2xl" animate={reduceMotion ? {} : { scale: [1, 1.04, 1] }} transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}>
             <Layers3 size={34} />
-          </div>
+          </motion.div>
           {nodes.map((node, index) => {
             const angle = (index / nodes.length) * Math.PI * 2 - Math.PI / 2;
             return (
@@ -448,7 +484,7 @@ function SystemVisual() {
 })`}</code></pre>
         </article>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -493,9 +529,9 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
             const ItemIcon = item.icon;
             const selected = item.id === activeProject;
             return (
-              <button key={item.id} data-project-tab onClick={() => setActiveProject(item.id)} className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-3 text-sm font-black transition ${selected ? "border-slate-950 bg-slate-950 text-white shadow-xl shadow-slate-950/15" : "border-emerald-100 bg-white text-slate-500 hover:bg-emerald-50"}`}>
+              <motion.button key={item.id} data-project-tab onClick={() => setActiveProject(item.id)} className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-3 text-sm font-black transition ${selected ? "border-slate-950 bg-slate-950 text-white shadow-xl shadow-slate-950/15" : "border-emerald-100 bg-white text-slate-500 hover:bg-emerald-50"}`} whileHover={{ y: -3 }} whileTap={{ scale: 0.96 }}>
                 <ItemIcon size={17} /> {item.title}
-              </button>
+              </motion.button>
             );
           })}
         </div>
@@ -503,7 +539,7 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
       <AnimatePresence mode="wait">
         <motion.div key={project.id} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
           <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_.75fr]">
-            <article className="relative overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/84 p-6 shadow-2xl shadow-emerald-950/7">
+            <motion.article className="lift-card relative overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/84 p-6 shadow-2xl shadow-emerald-950/7" whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
               <div className={`absolute inset-x-6 top-0 h-1 rounded-b-full bg-gradient-to-r ${accent.split(" ").slice(0, 2).join(" ")}`} />
               <div className="flex items-center gap-4">
                 <div className={`grid size-16 place-items-center rounded-3xl bg-gradient-to-br ${accent.split(" ").slice(0, 2).join(" ")} text-white shadow-xl`}>
@@ -518,13 +554,13 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
               <div className="mt-5 flex flex-wrap gap-2">
                 {project.tags.map((tag) => <Pill key={tag} tone={project.accent === "blue" ? "blue" : "emerald"}>{tag}</Pill>)}
               </div>
-              <a href={project.repo} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white px-4 py-3 font-black shadow-lg transition hover:-translate-y-1">
+              <MotionLink href={project.repo} target="_blank" rel="noreferrer" className="mt-5 border border-emerald-100 bg-white shadow-lg">
                 <Code2 size={18} /> View GitHub Repo <ArrowUpRight size={16} />
-              </a>
+              </MotionLink>
               <div className="mt-5 grid gap-3 md:grid-cols-3">
                 {project.metrics.map(([k, v]) => <Metric key={k} title={k} text={v} />)}
               </div>
-            </article>
+            </motion.article>
             <Workflow project={project} />
           </div>
           <Showcase project={project} setLightbox={setLightbox} />
@@ -533,12 +569,12 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {project.stacks.map(([title, items]) => (
-              <article key={title} className="rounded-3xl border border-emerald-100 bg-white/84 p-5 shadow-xl shadow-emerald-950/5">
+              <motion.article key={title} className="lift-card rounded-3xl border border-emerald-100 bg-white/84 p-5 shadow-xl shadow-emerald-950/5" whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
                 <h4 className="mb-4 font-black text-emerald-700">{title}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   {items.map((item) => <span key={item} className="rounded-2xl border border-emerald-100 bg-white px-3 py-2 text-xs font-black text-slate-600">{item}</span>)}
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </motion.div>
@@ -582,10 +618,20 @@ function Showcase({ project, setLightbox }) {
       </div>
       <div className={project.type === "phone" ? "grid items-end gap-4 md:grid-cols-3" : "grid items-center gap-5 md:grid-cols-[1.08fr_.92fr]"}>
         {project.screens.map(([label, src, alt], index) => (
-          <button key={src} type="button" onClick={() => setLightbox({ label, src, alt })} className={project.type === "phone" ? `phone-frame ${index === 0 ? "md:-translate-y-4" : ""}` : "laptop-frame"}>
+          <motion.button
+            key={src}
+            type="button"
+            onClick={() => setLightbox({ label, src, alt })}
+            className={project.type === "phone" ? `phone-frame ${index === 0 ? "md:-translate-y-4" : ""}` : "laptop-frame"}
+            initial={{ opacity: 0, y: 24, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: index * 0.08, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -7, scale: 1.015 }}
+            whileTap={{ scale: 0.98 }}
+          >
             <span className="screen-label">{label}</span>
             <img src={asset(src)} alt={alt} />
-          </button>
+          </motion.button>
         ))}
       </div>
     </div>
