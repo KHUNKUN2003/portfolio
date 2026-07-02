@@ -2,10 +2,14 @@
 
 Static portfolio website for Fullstack Developer job applications.
 
+Live site: https://khunkun2003.github.io/portfolio/
+
 ## Contents
 
 - Modern white/green portfolio UI
 - HEYLTH project case study
+- CEO Partner project case study
+- Blog System project case study
 - LINE LIFF product screenshots
 - Resume preview/download
 - Contact links
