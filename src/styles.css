@@ -58,7 +58,6 @@ a {
 
 .motion-link::after,
 .system-visual-card::after,
-.lift-card::after,
 .phone-frame::after {
   content: "";
   position: absolute;
@@ -77,7 +76,6 @@ a {
 
 .motion-link:hover::after,
 .system-visual-card:hover::after,
-.lift-card:hover::after,
 .phone-frame:hover::after {
   transform: translateX(140%);
 }
@@ -90,7 +88,6 @@ a {
 }
 
 .system-visual-card > *,
-.lift-card > *,
 .phone-frame > * {
   position: relative;
   z-index: 2;

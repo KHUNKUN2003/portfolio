@@ -229,10 +229,50 @@ const awards = [
 ];
 
 const accentClass = {
-  emerald: "from-emerald-500 to-teal-600 text-emerald-700 border-emerald-200 bg-emerald-50",
-  orange: "from-orange-500 to-amber-500 text-orange-800 border-orange-200 bg-orange-50",
-  forest: "from-green-600 to-lime-600 text-green-800 border-green-200 bg-green-50",
-  blue: "from-sky-500 to-blue-600 text-blue-800 border-blue-200 bg-blue-50"
+  emerald: {
+    gradient: "from-emerald-500 to-teal-600",
+    text: "text-emerald-700",
+    border: "border-emerald-100",
+    borderStrong: "border-emerald-200",
+    bg: "bg-emerald-50",
+    bgSoft: "bg-emerald-50/35",
+    viaSoft: "via-emerald-200",
+    tab: "border-emerald-600 bg-emerald-600 text-white shadow-emerald-700/20",
+    hover: "hover:bg-emerald-50 hover:text-emerald-700"
+  },
+  orange: {
+    gradient: "from-orange-500 to-amber-500",
+    text: "text-orange-700",
+    border: "border-orange-100",
+    borderStrong: "border-orange-200",
+    bg: "bg-orange-50",
+    bgSoft: "bg-orange-50/45",
+    viaSoft: "via-orange-200",
+    tab: "border-orange-500 bg-orange-500 text-white shadow-orange-700/20",
+    hover: "hover:bg-orange-50 hover:text-orange-700"
+  },
+  forest: {
+    gradient: "from-green-600 to-lime-600",
+    text: "text-green-700",
+    border: "border-green-100",
+    borderStrong: "border-green-200",
+    bg: "bg-green-50",
+    bgSoft: "bg-green-50/45",
+    viaSoft: "via-green-200",
+    tab: "border-green-600 bg-green-600 text-white shadow-green-700/20",
+    hover: "hover:bg-green-50 hover:text-green-700"
+  },
+  blue: {
+    gradient: "from-sky-500 to-blue-600",
+    text: "text-sky-700",
+    border: "border-sky-100",
+    borderStrong: "border-sky-200",
+    bg: "bg-sky-50",
+    bgSoft: "bg-sky-50/45",
+    viaSoft: "via-sky-200",
+    tab: "border-sky-600 bg-sky-600 text-white shadow-sky-700/20",
+    hover: "hover:bg-sky-50 hover:text-sky-700"
+  }
 };
 
 function App() {
@@ -523,7 +563,8 @@ function Info({ icon: Icon, children }) {
 }
 
 function Pill({ children, tone = "emerald" }) {
-  const colors = tone === "blue" ? "border-sky-200 bg-sky-50 text-sky-700" : "border-emerald-100 bg-emerald-50 text-emerald-700";
+  const theme = accentClass[tone] ?? accentClass.emerald;
+  const colors = `${theme.borderStrong} ${theme.bg} ${theme.text}`;
   return <span className={`inline-flex min-h-9 items-center rounded-full border px-3 text-sm font-black ${colors}`}>{children}</span>;
 }
 
@@ -550,7 +591,7 @@ function Profile() {
 
 function Projects({ activeProject, setActiveProject, project, setLightbox }) {
   const Icon = project.icon;
-  const accent = accentClass[project.accent];
+  const accent = accentClass[project.accent] ?? accentClass.emerald;
   return (
     <Section id="projects" eyebrow="Featured Projects" title="Selected systems built for real business workflows">
       <Reveal className="mt-8">
@@ -558,8 +599,9 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
           {projects.map((item) => {
             const ItemIcon = item.icon;
             const selected = item.id === activeProject;
+            const itemAccent = accentClass[item.accent] ?? accentClass.emerald;
             return (
-              <motion.button key={item.id} data-project-tab onClick={() => setActiveProject(item.id)} className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-3 text-sm font-black transition ${selected ? "border-slate-950 bg-slate-950 text-white shadow-xl shadow-slate-950/15" : "border-emerald-100 bg-white text-slate-500 hover:bg-emerald-50"}`} whileHover={{ y: -3 }} whileTap={{ scale: 0.96 }}>
+              <motion.button key={item.id} data-project-tab onClick={() => setActiveProject(item.id)} className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-3 text-sm font-black transition ${selected ? `${itemAccent.tab} shadow-xl` : `border-slate-200 bg-white text-slate-500 ${itemAccent.hover}`}`} whileHover={{ y: -3 }} whileTap={{ scale: 0.96 }}>
                 <ItemIcon size={17} /> {item.title}
               </motion.button>
             );
@@ -569,10 +611,10 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
       <AnimatePresence mode="wait">
         <motion.div key={project.id} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
           <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_.75fr]">
-            <motion.article className="lift-card relative overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/84 p-6 shadow-2xl shadow-emerald-950/7" whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
-              <div className={`absolute inset-x-6 top-0 h-1 rounded-b-full bg-gradient-to-r ${accent.split(" ").slice(0, 2).join(" ")}`} />
+            <motion.article className={`lift-card relative overflow-hidden rounded-[2rem] border ${accent.border} bg-white/84 p-6 shadow-2xl shadow-emerald-950/7`} whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
+              <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent.gradient}`} />
               <div className="flex items-center gap-4">
-                <div className={`grid size-16 place-items-center rounded-3xl bg-gradient-to-br ${accent.split(" ").slice(0, 2).join(" ")} text-white shadow-xl`}>
+                <div className={`grid size-16 place-items-center rounded-3xl bg-gradient-to-br ${accent.gradient} text-white shadow-xl`}>
                   <Icon size={30} />
                 </div>
                 <div>
@@ -582,27 +624,27 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
               </div>
               <p className="mt-5 leading-8 text-slate-600">{project.intro}</p>
               <div className="mt-5 flex flex-wrap gap-2">
-                {project.tags.map((tag) => <Pill key={tag} tone={project.accent === "blue" ? "blue" : "emerald"}>{tag}</Pill>)}
+                {project.tags.map((tag) => <Pill key={tag} tone={project.accent}>{tag}</Pill>)}
               </div>
-              <MotionLink href={project.repo} target="_blank" rel="noreferrer" className="mt-5 border border-emerald-100 bg-white shadow-lg">
+              <MotionLink href={project.repo} target="_blank" rel="noreferrer" className={`mt-5 border ${accent.border} bg-white shadow-lg`}>
                 <Code2 size={18} /> View GitHub Repo <ArrowUpRight size={16} />
               </MotionLink>
               <div className="mt-5 grid gap-3 md:grid-cols-3">
-                {project.metrics.map(([k, v]) => <Metric key={k} title={k} text={v} />)}
+                {project.metrics.map(([k, v]) => <Metric key={k} title={k} text={v} tone={project.accent} />)}
               </div>
             </motion.article>
             <Workflow project={project} />
           </div>
           <Showcase project={project} setLightbox={setLightbox} />
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {project.details.map(([title, text], index) => <Detail key={title} title={title} text={text} delay={index * 0.04} />)}
+            {project.details.map(([title, text], index) => <Detail key={title} title={title} text={text} tone={project.accent} delay={index * 0.04} />)}
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {project.stacks.map(([title, items]) => (
-              <motion.article key={title} className="lift-card rounded-3xl border border-emerald-100 bg-white/84 p-5 shadow-xl shadow-emerald-950/5" whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
-                <h4 className="mb-4 font-black text-emerald-700">{title}</h4>
+              <motion.article key={title} className={`lift-card rounded-3xl border ${accent.border} bg-white/84 p-5 shadow-xl shadow-emerald-950/5`} whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
+                <h4 className={`mb-4 font-black ${accent.text}`}>{title}</h4>
                 <div className="grid grid-cols-2 gap-2">
-                  {items.map((item) => <span key={item} className="rounded-2xl border border-emerald-100 bg-white px-3 py-2 text-xs font-black text-slate-600">{item}</span>)}
+                  {items.map((item) => <span key={item} className={`rounded-2xl border ${accent.border} bg-white px-3 py-2 text-xs font-black text-slate-600`}>{item}</span>)}
                 </div>
               </motion.article>
             ))}
@@ -613,19 +655,21 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
   );
 }
 
-function Metric({ title, text }) {
-  return <div className="rounded-2xl border border-emerald-100 bg-emerald-50/35 p-4"><strong className="block font-black text-emerald-700">{title}</strong><span className="mt-1 block text-sm font-bold text-slate-500">{text}</span></div>;
+function Metric({ title, text, tone = "emerald" }) {
+  const accent = accentClass[tone] ?? accentClass.emerald;
+  return <div className={`rounded-2xl border ${accent.border} ${accent.bgSoft} p-4`}><strong className={`block font-black ${accent.text}`}>{title}</strong><span className="mt-1 block text-sm font-bold text-slate-500">{text}</span></div>;
 }
 
 function Workflow({ project }) {
+  const accent = accentClass[project.accent] ?? accentClass.emerald;
   return (
-    <article className="rounded-[2rem] border border-emerald-100 bg-white/84 p-6 shadow-2xl shadow-emerald-950/7">
+    <article className={`rounded-[2rem] border ${accent.border} bg-white/84 p-6 shadow-2xl shadow-emerald-950/7`}>
       <h3 className="mb-4 text-xl font-black">System Workflow</h3>
       <div className="relative grid gap-3">
-        <span className="absolute bottom-8 left-6 top-8 w-px bg-gradient-to-b from-transparent via-emerald-200 to-transparent" />
+        <span className={`absolute bottom-8 left-6 top-8 w-px bg-gradient-to-b from-transparent ${accent.viaSoft} to-transparent`} />
         {project.workflow.map(([title, text], index) => (
-          <motion.div key={title} className="relative grid min-h-20 grid-cols-[54px_1fr] items-center gap-3 rounded-2xl border border-emerald-100 bg-emerald-50/35 p-3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.06 }}>
-            <span className="z-10 grid size-12 place-items-center rounded-2xl bg-white font-black text-emerald-700 shadow-sm">{String(index + 1).padStart(2, "0")}</span>
+          <motion.div key={title} className={`relative grid min-h-20 grid-cols-[54px_1fr] items-center gap-3 rounded-2xl border ${accent.border} ${accent.bgSoft} p-3`} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.06 }}>
+            <span className={`z-10 grid size-12 place-items-center rounded-2xl bg-white font-black ${accent.text} shadow-sm`}>{String(index + 1).padStart(2, "0")}</span>
             <span><strong className="block font-black">{title}</strong><small className="font-bold text-slate-500">{text}</small></span>
           </motion.div>
         ))}
@@ -635,10 +679,11 @@ function Workflow({ project }) {
 }
 
 function Showcase({ project, setLightbox }) {
+  const accent = accentClass[project.accent] ?? accentClass.emerald;
   return (
-    <div className="mt-5 grid gap-6 overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/70 p-5 shadow-2xl shadow-emerald-950/7 md:p-6 lg:grid-cols-[.38fr_1fr]">
+    <div className={`mt-5 grid gap-6 overflow-hidden rounded-[2rem] border ${accent.border} bg-white/70 p-5 shadow-2xl shadow-emerald-950/7 md:p-6 lg:grid-cols-[.38fr_1fr]`}>
       <div className="self-center">
-        <p className="mb-3 text-sm font-black text-emerald-700">Product Screens</p>
+        <p className={`mb-3 text-sm font-black ${accent.text}`}>Product Screens</p>
         <h3 className="text-balance text-3xl font-black leading-tight md:text-4xl">
           {project.type === "phone" ? "ประสบการณ์ใช้งานจริงบน LINE และ mobile flow" : project.id === "vidio" ? "Private video viewer พร้อมหลังบ้านจัดการวิดีโอ" : "หน้าอ่านบล็อกและหลังบ้านที่ใช้งานจริง"}
         </h3>
@@ -668,8 +713,9 @@ function Showcase({ project, setLightbox }) {
   );
 }
 
-function Detail({ title, text, delay }) {
-  return <Reveal delay={delay} className="rounded-3xl border border-emerald-100 bg-white/82 p-5 shadow-xl shadow-emerald-950/5"><h4 className="font-black text-emerald-700">{title}</h4><p className="mt-3 text-sm font-semibold leading-7 text-slate-600">{text}</p></Reveal>;
+function Detail({ title, text, tone = "emerald", delay }) {
+  const accent = accentClass[tone] ?? accentClass.emerald;
+  return <Reveal delay={delay} className={`rounded-3xl border ${accent.border} bg-white/82 p-5 shadow-xl shadow-emerald-950/5`}><h4 className={`font-black ${accent.text}`}>{title}</h4><p className="mt-3 text-sm font-semibold leading-7 text-slate-600">{text}</p></Reveal>;
 }
 
 function Stack() {
