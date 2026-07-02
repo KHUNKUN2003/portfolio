@@ -1,0 +1,36 @@
+{
+  "name": "web-portfolio",
+  "version": "1.0.0",
+  "description": "Modern React portfolio website for Fullstack Developer job applications.",
+  "private": true,
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KHUNKUN2003/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KHUNKUN2003/portfolio/issues"
+  },
+  "homepage": "https://khunkun2003.github.io/portfolio/",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.2",
+    "@vitejs/plugin-react": "^6.0.3",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.23.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.2",
+    "vite": "^8.1.3"
+  }
+}

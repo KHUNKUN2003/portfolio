@@ -1,39 +1,48 @@
 # Kritsanapong Maneesri Portfolio
 
-Static portfolio website for Fullstack Developer job applications.
+Modern portfolio website for Fullstack Developer job applications.
 
 Live site: https://khunkun2003.github.io/portfolio/
+
+## Stack
+
+- React 19
+- Vite
+- Tailwind CSS
+- Framer Motion
+- lucide-react
+- GitHub Pages
 
 ## Contents
 
 - Modern white/green portfolio UI
-- HEYLTH project case study
-- CEO Partner project case study
-- Blog System project case study
-- Vidio+ project case study
-- LINE LIFF product screenshots
+- Animated hero and project showcase
+- HEYLTH, CEO Partner, Blog System, and Vidio+ case studies
+- Phone and notebook product mockups
+- Project screenshot lightbox
 - Resume preview/download
 - Contact links
 
-## Local Preview
+## Local Development
 
 ```powershell
-python -m http.server 4173 --bind 127.0.0.1
+npm install
+npm run dev
 ```
 
 Open:
 
 ```text
-http://127.0.0.1:4173/
+http://127.0.0.1:5173/portfolio/
+```
+
+## Build
+
+```powershell
+npm run build
+npm run preview
 ```
 
 ## Deploy
 
-This site is plain HTML/CSS/JavaScript and can be deployed to:
-
-- GitHub Pages
-- Vercel
-- Netlify
-- Any static hosting service
-
-The repository includes `.github/workflows/pages.yml` for GitHub Pages and `vercel.json` for Vercel.
+GitHub Pages deploys automatically through `.github/workflows/pages.yml`.
