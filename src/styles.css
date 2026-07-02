@@ -31,6 +31,15 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.ambient-accent {
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+
+.ambient-line {
+  will-change: transform, opacity;
+}
+
 .hero-ambient {
   background:
     radial-gradient(circle at 75% 10%, rgba(16, 185, 129, .22), transparent 34%),
@@ -351,9 +360,62 @@ a {
   backdrop-filter: blur(12px);
 }
 
+.screen-row {
+  display: flex;
+  gap: 1rem;
+  margin-inline: -4px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 4px 4px 16px;
+  scroll-padding-inline: 4px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: rgba(16, 185, 129, .45) transparent;
+  scrollbar-width: thin;
+}
+
+.screen-row > button {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+.phone-screen-row > button {
+  width: min(260px, 78vw);
+}
+
+.laptop-screen-row > button {
+  width: min(520px, 86vw);
+}
+
 @media (max-width: 640px) {
+  .hero-ambient {
+    inset: -24px -16px;
+  }
+
   .phone-frame img {
-    height: min(520px, 130vw);
+    height: min(460px, 122vw);
+  }
+
+  .screen-label {
+    left: 18px;
+    top: 16px;
+    max-width: calc(100% - 36px);
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .screen-row {
+    display: grid;
+    margin-inline: 0;
+    overflow: visible;
+    padding: 0;
+    scroll-snap-type: none;
+    scrollbar-width: auto;
+  }
+
+  .screen-row > button {
+    flex: initial;
+    width: auto;
   }
 }
 
@@ -369,6 +431,11 @@ a {
 
   .loader-orbit-ring {
     animation: none;
+  }
+
+  .ambient-accent,
+  .ambient-line {
+    transform: none !important;
   }
 }
 

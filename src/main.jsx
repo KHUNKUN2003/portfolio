@@ -251,11 +251,12 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#f7fbf9] text-slate-950">
+    <div className="relative isolate min-h-screen overflow-x-hidden bg-[#f7fbf9] text-slate-950">
       <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
+      <BackgroundAccents />
       <motion.div className="fixed left-0 top-0 z-[100] h-1 w-full origin-left bg-gradient-to-r from-emerald-500 via-teal-400 to-sky-500" style={{ scaleX }} />
       <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Profile />
         <Projects activeProject={activeProject} setActiveProject={setActiveProject} project={project} setLightbox={setLightbox} />
@@ -266,6 +267,35 @@ function App() {
       </main>
       <Footer />
       <AnimatePresence>{lightbox && <Lightbox item={lightbox} onClose={() => setLightbox(null)} />}</AnimatePresence>
+    </div>
+  );
+}
+
+function BackgroundAccents() {
+  const reduceMotion = useReducedMotion();
+  const accents = [
+    "left-[4%] top-[10%] h-56 w-56 bg-emerald-300/18",
+    "right-[-4rem] top-[28%] h-72 w-72 bg-teal-300/16",
+    "left-[-5rem] top-[58%] h-80 w-80 bg-sky-200/14",
+    "right-[8%] bottom-[8%] h-64 w-64 bg-lime-300/12"
+  ];
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(16,185,129,.08),transparent_28%),radial-gradient(circle_at_88%_42%,rgba(20,184,166,.08),transparent_30%)]" />
+      {accents.map((className, index) => (
+        <motion.span
+          key={className}
+          className={`ambient-accent absolute rounded-full blur-3xl ${className}`}
+          animate={reduceMotion ? {} : { x: [0, index % 2 ? -26 : 24, 0], y: [0, index % 2 ? 18 : -22, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 12 + index * 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.8 }}
+        />
+      ))}
+      <motion.span
+        className="ambient-line absolute left-[15vw] right-[15vw] top-24 h-px origin-center bg-gradient-to-r from-transparent via-emerald-300/50 to-transparent"
+        animate={reduceMotion ? {} : { opacity: [0.2, 0.55, 0.2], scaleX: [0.94, 1, 0.94] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+      />
     </div>
   );
 }
@@ -362,7 +392,7 @@ function Reveal({ children, className = "", delay = 0 }) {
 
 function Hero() {
   return (
-    <section id="home" className="relative mx-auto grid min-h-[calc(100vh-80px)] w-[min(1180px,calc(100%-32px))] items-center gap-10 py-12 lg:grid-cols-[0.95fr_1.05fr]">
+    <section id="home" className="relative mx-auto grid min-h-[calc(100vh-80px)] w-[min(1180px,calc(100%-32px))] items-center gap-8 py-10 md:gap-10 md:py-12 lg:grid-cols-[0.95fr_1.05fr]">
       <motion.div className="hero-ambient pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
       <Reveal>
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/72 px-4 py-2 text-sm font-black text-emerald-700 shadow-lg shadow-emerald-900/5">
@@ -472,7 +502,7 @@ function SystemVisual() {
             );
           })}
         </div>
-        <article className="rounded-3xl bg-[#08261c] p-5 font-mono text-sm leading-7 text-emerald-100 shadow-2xl md:col-span-2">
+        <article className="hidden rounded-3xl bg-[#08261c] p-5 font-mono text-sm leading-7 text-emerald-100 shadow-2xl sm:block md:col-span-2">
           <div className="mb-4 flex gap-2">{[1, 2, 3].map((i) => <span key={i} className="size-3 rounded-full bg-emerald-400" />)}</div>
           <pre className="overflow-auto"><code>{`const portfolio = buildSystem({
   frontend: "React + Tailwind",
@@ -606,7 +636,7 @@ function Workflow({ project }) {
 
 function Showcase({ project, setLightbox }) {
   return (
-    <div className="mt-5 grid gap-6 overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/70 p-6 shadow-2xl shadow-emerald-950/7 lg:grid-cols-[.38fr_1fr]">
+    <div className="mt-5 grid gap-6 overflow-hidden rounded-[2rem] border border-emerald-100 bg-white/70 p-5 shadow-2xl shadow-emerald-950/7 md:p-6 lg:grid-cols-[.38fr_1fr]">
       <div className="self-center">
         <p className="mb-3 text-sm font-black text-emerald-700">Product Screens</p>
         <h3 className="text-balance text-3xl font-black leading-tight md:text-4xl">
@@ -616,7 +646,7 @@ function Showcase({ project, setLightbox }) {
           {project.type === "phone" ? "ตัวอย่างหน้าจอจริงจากระบบที่ผู้ใช้และผู้ดูแลใช้งานผ่าน LINE workflow" : "แสดงหน้าจอ desktop web ในกรอบ notebook เพื่อให้เห็นบริบทของ product ชัดขึ้น"}
         </p>
       </div>
-      <div className={project.type === "phone" ? "grid items-end gap-4 md:grid-cols-3" : "grid items-center gap-5 md:grid-cols-[1.08fr_.92fr]"}>
+      <div className={project.type === "phone" ? "screen-row phone-screen-row md:grid md:items-end md:gap-4 md:grid-cols-3" : "screen-row laptop-screen-row md:grid md:items-center md:gap-5 md:grid-cols-[1.08fr_.92fr]"}>
         {project.screens.map(([label, src, alt], index) => (
           <motion.button
             key={src}
