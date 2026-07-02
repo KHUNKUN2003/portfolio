@@ -10,6 +10,7 @@ Live site: https://khunkun2003.github.io/portfolio/
 - HEYLTH project case study
 - CEO Partner project case study
 - Blog System project case study
+- Vidio+ project case study
 - LINE LIFF product screenshots
 - Resume preview/download
 - Contact links

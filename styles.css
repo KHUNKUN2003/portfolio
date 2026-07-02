@@ -877,6 +877,24 @@ h1 span {
   height: 38px;
 }
 
+.vidio-mark {
+  width: 72px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 70% 22%, rgba(255, 255, 255, .24), transparent 30%),
+    linear-gradient(135deg, #111827, #1677e8);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(22, 119, 232, .2);
+}
+
+.vidio-mark svg {
+  width: 40px;
+  height: 40px;
+}
+
 .project-case-ceo {
   --ceo-red: #f04438;
   --ceo-orange: #f59e0b;
@@ -994,6 +1012,80 @@ h1 span {
   background:
     radial-gradient(circle at 84% 12%, rgba(79, 143, 89, .16), transparent 36%),
     linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(246, 252, 247, .98));
+}
+
+.project-case-vidio {
+  --vidio-blue: #1677e8;
+  --vidio-dark: #111827;
+  --vidio-soft: #edf6ff;
+  --vidio-line: #c9def5;
+}
+
+.vidio-card,
+.project-case-vidio .project-showcase,
+.project-case-vidio .project-details article,
+.project-case-vidio .stack-strip .stack-card {
+  border-color: var(--vidio-line);
+}
+
+.vidio-card::before,
+.project-case-vidio .workflow-panel::before,
+.project-case-vidio .project-details article::before,
+.project-case-vidio .stack-strip .stack-card::before {
+  background: linear-gradient(90deg, var(--vidio-blue), rgba(22, 119, 232, 0));
+}
+
+.project-case-vidio .project-tags span {
+  border-color: rgba(22, 119, 232, .22);
+  background: var(--vidio-soft);
+  color: #104f99;
+}
+
+.project-case-vidio .project-links a:hover {
+  border-color: var(--vidio-blue);
+  background: var(--vidio-soft);
+}
+
+.project-case-vidio .project-metrics strong,
+.project-case-vidio .project-details span,
+.project-case-vidio .stack-strip strong,
+.project-case-vidio .section-label {
+  color: #145da8;
+}
+
+.vidio-workflow .workflow::after {
+  background: var(--vidio-blue);
+  box-shadow: 0 0 18px rgba(22, 119, 232, .38);
+}
+
+.vidio-workflow .workflow-step span {
+  color: #145da8;
+}
+
+.vidio-showcase {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(22, 119, 232, .14), transparent 36%),
+    radial-gradient(circle at 18% 80%, rgba(17, 24, 39, .05), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(245, 249, 255, .98));
+}
+
+.project-case-vidio .screen-shot {
+  border-color: rgba(201, 222, 245, .98);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f6faff 76%, #e7f1fb 100%);
+  box-shadow:
+    0 34px 74px rgba(15, 48, 88, .14),
+    inset 0 1px 0 rgba(255, 255, 255, .86);
+}
+
+.project-case-vidio .screen-shot button {
+  border-color: rgba(201, 222, 245, .92);
+  background: #f7fbff;
+}
+
+.project-case-vidio .screen-shot span {
+  border-color: rgba(201, 222, 245, .9);
+  color: #145da8;
 }
 
 .project-brand h3 {
@@ -1535,6 +1627,9 @@ h1 span {
 .tech-mark.pg { background: #336791; }
 .tech-mark.cors { background: #16a34a; }
 .tech-mark.supertest { background: #475569; }
+.tech-mark.youtube { background: #ff0000; }
+.tech-mark.jwt { background: #111827; }
+.tech-mark.otp { background: #1677e8; }
 
 .skill-grid {
   display: grid;

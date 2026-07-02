@@ -602,6 +602,145 @@
         </div>
       </div>
       </div>
+
+      <div class="project-case project-case-vidio">
+      <div class="project-layout">
+        <article class="project-card vidio-card" data-reveal>
+          <div class="project-brand">
+            <div class="vidio-mark">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M10 8.5v7l6-3.5-6-3.5Z"/><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z"/></svg>
+            </div>
+            <div>
+              <h3>Vidio+</h3>
+              <p>Private YouTube video viewer with admin controls</p>
+            </div>
+          </div>
+          <p>
+            ระบบดูวิดีโอส่วนตัวที่แยกบทบาท user และ admin มีหน้า viewer สำหรับผู้ใช้
+            และ dashboard หลังบ้านสำหรับเพิ่ม แก้ไข ลบ เปิด/ปิดการมองเห็น และเรียงลำดับวิดีโอ
+            พร้อม flow login ด้วย phone OTP demo และ LINE Login membership approval
+          </p>
+          <div class="project-tags">
+            <span>Private Viewer</span>
+            <span>YouTube Embed</span>
+            <span>Admin Dashboard</span>
+            <span>Phone OTP</span>
+            <span>LINE Login</span>
+          </div>
+          <div class="project-links" aria-label="Vidio+ project links">
+            <a href="https://github.com/KHUNKUN2003/Vidio-" target="_blank" rel="noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-6.5.1-1.3-.4-2.5-1.3-3.5.1-.3.6-1.7-.1-3.5 0 0-1-.3-3.4 1.3a11.6 11.6 0 0 0-6.2 0C6.6.7 5.6 1 5.6 1c-.7 1.8-.2 3.2-.1 3.5A5 5 0 0 0 4.2 8C4.2 12.5 7.2 14.5 10.2 14.5A4.8 4.8 0 0 0 9 18v4"/><path d="M9 18c-4.5 2-5-2-7-2"/></svg>
+              View GitHub Repo
+            </a>
+          </div>
+          <div class="project-metrics" aria-label="Vidio+ project highlights">
+            <div>
+              <strong>Roles</strong>
+              <span>Separated admin and user flows</span>
+            </div>
+            <div>
+              <strong>Sessions</strong>
+              <span>Single active user protection</span>
+            </div>
+            <div>
+              <strong>Neon</strong>
+              <span>PostgreSQL ready database</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="workflow-panel vidio-workflow" data-reveal>
+          <h3>Access Workflow</h3>
+          <div class="workflow">
+            <div class="workflow-step"><span>01</span><strong>Login</strong><small>Phone OTP or LINE</small></div>
+            <div class="workflow-step"><span>02</span><strong>Approve</strong><small>Admin membership review</small></div>
+            <div class="workflow-step"><span>03</span><strong>View</strong><small>Private YouTube embed</small></div>
+            <div class="workflow-step"><span>04</span><strong>Manage</strong><small>Add and reorder videos</small></div>
+            <div class="workflow-step"><span>05</span><strong>Protect</strong><small>Session and visibility rules</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-showcase vidio-showcase" aria-label="Vidio+ product screenshots" data-reveal>
+        <div class="showcase-copy">
+          <p class="section-label">Product Screens</p>
+          <h3>Private video viewer พร้อมหลังบ้านจัดการวิดีโอ</h3>
+          <p>
+            ตัวอย่าง Vidio+ ฝั่ง user สำหรับดูวิดีโอหลัก และฝั่ง admin สำหรับเพิ่มวิดีโอ
+            ดูสถานะจำนวนวิดีโอ เปิด/ปิดการแสดงผล และจัดการรายการวิดีโอ
+          </p>
+        </div>
+        <div class="screen-gallery">
+          <figure class="screen-shot screen-shot-main">
+            <span>User Viewer</span>
+            <button type="button" data-lightbox-src="assets/vidio-user.png" data-lightbox-title="Vidio+ User Viewer" aria-label="Open Vidio+ user viewer screenshot">
+              <img src="assets/vidio-user.png" alt="Vidio+ private user video viewer with YouTube embed">
+            </button>
+          </figure>
+          <figure class="screen-shot">
+            <span>Admin Dashboard</span>
+            <button type="button" data-lightbox-src="assets/vidio-admin.png" data-lightbox-title="Vidio+ Admin Dashboard" aria-label="Open Vidio+ admin dashboard screenshot">
+              <img src="assets/vidio-admin.png" alt="Vidio+ admin dashboard for adding and managing videos">
+            </button>
+          </figure>
+        </div>
+      </div>
+
+      <div class="project-details" aria-label="Vidio+ short project details" data-reveal>
+        <article>
+          <span>บทบาทของผม</span>
+          <p>พัฒนา React/Vite frontend, Express API, PostgreSQL schema, auth/session flow, admin dashboard และ viewer experience สำหรับวิดีโอแบบ private.</p>
+        </article>
+        <article>
+          <span>ฟีเจอร์หลัก</span>
+          <p>Admin จัดการวิดีโอ, toggle visibility, reorder videos, user login ด้วย phone OTP demo หรือ LINE Login, membership approval และ YouTube embed viewer.</p>
+        </article>
+        <article>
+          <span>ความท้าทายทางเทคนิค</span>
+          <p>แยกสิทธิ์ user/admin, ป้องกัน session ซ้อน, sync สถานะวิดีโอกับฐานข้อมูล และจำกัด navigation/share controls ของ YouTube iframe เท่าที่ platform อนุญาต.</p>
+        </article>
+        <article>
+          <span>ผลลัพธ์</span>
+          <p>ได้ระบบวิดีโอส่วนตัวที่มีหน้าใช้งานสำหรับ user และหลังบ้านสำหรับ admin พร้อมโครง Neon PostgreSQL และ deployment-ready config.</p>
+        </article>
+      </div>
+
+      <div class="stack-strip" aria-label="Vidio+ stack" data-reveal>
+        <div class="stack-card">
+          <strong>Frontend</strong>
+          <ul class="tech-logo-list" aria-label="Vidio+ frontend technologies">
+            <li><span class="tech-mark react">R</span>React 19</li>
+            <li><span class="tech-mark vite">V</span>Vite</li>
+            <li><span class="tech-mark js">JS</span>JavaScript</li>
+            <li><span class="tech-mark youtube">YT</span>YouTube Embed</li>
+            <li><span class="tech-mark css">CSS</span>Apple-inspired UI</li>
+            <li><span class="tech-mark test">T</span>Domain tests</li>
+          </ul>
+        </div>
+        <div class="stack-card">
+          <strong>Backend & Auth</strong>
+          <ul class="tech-logo-list" aria-label="Vidio+ backend and auth technologies">
+            <li><span class="tech-mark nodejs">N</span>Node.js</li>
+            <li><span class="tech-mark express">Ex</span>Express 5</li>
+            <li><span class="tech-mark pg">pg</span>node-postgres</li>
+            <li><span class="tech-mark jwt">JWT</span>HMAC tokens</li>
+            <li><span class="tech-mark otp">OTP</span>Phone OTP</li>
+            <li><span class="tech-mark line">LI</span>LINE Login</li>
+          </ul>
+        </div>
+        <div class="stack-card">
+          <strong>Database & Ops</strong>
+          <ul class="tech-logo-list" aria-label="Vidio+ database and operations technologies">
+            <li><span class="tech-mark postgres">Pg</span>PostgreSQL</li>
+            <li><span class="tech-mark neon">Ne</span>Neon</li>
+            <li><span class="tech-mark sql">SQL</span>server/schema.sql</li>
+            <li><span class="tech-mark env">Env</span>.env config</li>
+            <li><span class="tech-mark api">API</span>REST endpoints</li>
+            <li><span class="tech-mark deploy">Dp</span>Deploy ready</li>
+          </ul>
+        </div>
+      </div>
+      </div>
     </section>
 
     <section class="section-shell stack-section" id="stack" aria-labelledby="stack-title">
