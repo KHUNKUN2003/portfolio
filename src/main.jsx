@@ -237,6 +237,7 @@ const accentClass = {
     bg: "bg-emerald-50",
     bgSoft: "bg-emerald-50/35",
     viaSoft: "via-emerald-200",
+    lineRun: "via-emerald-500",
     tab: "border-emerald-600 bg-emerald-600 text-white shadow-emerald-700/20",
     hover: "hover:bg-emerald-50 hover:text-emerald-700"
   },
@@ -248,6 +249,7 @@ const accentClass = {
     bg: "bg-orange-50",
     bgSoft: "bg-orange-50/45",
     viaSoft: "via-orange-200",
+    lineRun: "via-orange-500",
     tab: "border-orange-500 bg-orange-500 text-white shadow-orange-700/20",
     hover: "hover:bg-orange-50 hover:text-orange-700"
   },
@@ -259,6 +261,7 @@ const accentClass = {
     bg: "bg-green-50",
     bgSoft: "bg-green-50/45",
     viaSoft: "via-green-200",
+    lineRun: "via-green-600",
     tab: "border-green-600 bg-green-600 text-white shadow-green-700/20",
     hover: "hover:bg-green-50 hover:text-green-700"
   },
@@ -270,6 +273,7 @@ const accentClass = {
     bg: "bg-sky-50",
     bgSoft: "bg-sky-50/45",
     viaSoft: "via-sky-200",
+    lineRun: "via-sky-500",
     tab: "border-sky-600 bg-sky-600 text-white shadow-sky-700/20",
     hover: "hover:bg-sky-50 hover:text-sky-700"
   }
@@ -595,13 +599,13 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
   return (
     <Section id="projects" eyebrow="Featured Projects" title="Selected systems built for real business workflows">
       <Reveal className="mt-8">
-        <div className="flex gap-2 overflow-x-auto pb-3">
+        <div className="flex gap-2 overflow-x-auto px-1 py-2">
           {projects.map((item) => {
             const ItemIcon = item.icon;
             const selected = item.id === activeProject;
             const itemAccent = accentClass[item.accent] ?? accentClass.emerald;
             return (
-              <motion.button key={item.id} data-project-tab onClick={() => setActiveProject(item.id)} className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-3 text-sm font-black transition ${selected ? `${itemAccent.tab} shadow-xl` : `border-slate-200 bg-white text-slate-500 ${itemAccent.hover}`}`} whileHover={{ y: -3 }} whileTap={{ scale: 0.96 }}>
+              <motion.button key={item.id} data-project-tab onClick={() => setActiveProject(item.id)} className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-3 text-sm font-black transition ${selected ? `${itemAccent.tab} shadow-xl` : `border-slate-200 bg-white text-slate-500 ${itemAccent.hover}`}`} whileHover={{ y: -2 }} whileTap={{ scale: 0.96 }}>
                 <ItemIcon size={17} /> {item.title}
               </motion.button>
             );
@@ -662,11 +666,18 @@ function Metric({ title, text, tone = "emerald" }) {
 
 function Workflow({ project }) {
   const accent = accentClass[project.accent] ?? accentClass.emerald;
+  const reduceMotion = useReducedMotion();
   return (
     <article className={`rounded-[2rem] border ${accent.border} bg-white/84 p-6 shadow-2xl shadow-emerald-950/7`}>
       <h3 className="mb-4 text-xl font-black">System Workflow</h3>
       <div className="relative grid gap-3">
-        <span className={`absolute bottom-8 left-6 top-8 w-px bg-gradient-to-b from-transparent ${accent.viaSoft} to-transparent`} />
+        <span className={`absolute bottom-8 left-6 top-8 w-px overflow-hidden bg-gradient-to-b from-transparent ${accent.viaSoft} to-transparent`}>
+          <motion.span
+            className={`absolute left-0 top-0 h-20 w-px bg-gradient-to-b from-transparent ${accent.lineRun} to-transparent opacity-80`}
+            animate={reduceMotion ? {} : { y: ["-120%", "360%"] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "linear" }}
+          />
+        </span>
         {project.workflow.map(([title, text], index) => (
           <motion.div key={title} className={`relative grid min-h-20 grid-cols-[54px_1fr] items-center gap-3 rounded-2xl border ${accent.border} ${accent.bgSoft} p-3`} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.06 }}>
             <span className={`z-10 grid size-12 place-items-center rounded-2xl bg-white font-black ${accent.text} shadow-sm`}>{String(index + 1).padStart(2, "0")}</span>
