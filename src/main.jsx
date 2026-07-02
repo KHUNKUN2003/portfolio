@@ -238,6 +238,7 @@ const accentClass = {
     bgSoft: "bg-emerald-50/35",
     viaSoft: "via-emerald-200",
     lineRun: "via-emerald-500",
+    number: "from-emerald-500 to-teal-600 text-white shadow-emerald-700/20",
     tab: "border-emerald-600 bg-emerald-600 text-white shadow-emerald-700/20",
     hover: "hover:bg-emerald-50 hover:text-emerald-700"
   },
@@ -250,6 +251,7 @@ const accentClass = {
     bgSoft: "bg-orange-50/45",
     viaSoft: "via-orange-200",
     lineRun: "via-orange-500",
+    number: "from-orange-500 to-amber-500 text-white shadow-orange-700/20",
     tab: "border-orange-500 bg-orange-500 text-white shadow-orange-700/20",
     hover: "hover:bg-orange-50 hover:text-orange-700"
   },
@@ -262,6 +264,7 @@ const accentClass = {
     bgSoft: "bg-green-50/45",
     viaSoft: "via-green-200",
     lineRun: "via-green-600",
+    number: "from-green-600 to-lime-600 text-white shadow-green-700/20",
     tab: "border-green-600 bg-green-600 text-white shadow-green-700/20",
     hover: "hover:bg-green-50 hover:text-green-700"
   },
@@ -274,6 +277,7 @@ const accentClass = {
     bgSoft: "bg-sky-50/45",
     viaSoft: "via-sky-200",
     lineRun: "via-sky-500",
+    number: "from-sky-500 to-blue-600 text-white shadow-sky-700/20",
     tab: "border-sky-600 bg-sky-600 text-white shadow-sky-700/20",
     hover: "hover:bg-sky-50 hover:text-sky-700"
   }
@@ -317,28 +321,30 @@ function App() {
 
 function BackgroundAccents() {
   const reduceMotion = useReducedMotion();
-  const accents = [
-    "left-[4%] top-[10%] h-56 w-56 bg-emerald-300/18",
-    "right-[-4rem] top-[28%] h-72 w-72 bg-teal-300/16",
-    "left-[-5rem] top-[58%] h-80 w-80 bg-sky-200/14",
-    "right-[8%] bottom-[8%] h-64 w-64 bg-lime-300/12"
-  ];
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(16,185,129,.08),transparent_28%),radial-gradient(circle_at_88%_42%,rgba(20,184,166,.08),transparent_30%)]" />
-      {accents.map((className, index) => (
-        <motion.span
-          key={className}
-          className={`ambient-accent absolute rounded-full blur-3xl ${className}`}
-          animate={reduceMotion ? {} : { x: [0, index % 2 ? -26 : 24, 0], y: [0, index % 2 ? 18 : -22, 0], scale: [1, 1.08, 1] }}
-          transition={{ duration: 12 + index * 2, repeat: Infinity, ease: "easeInOut", delay: index * 0.8 }}
-        />
-      ))}
+      <div className="aurora-mesh" />
+      <div className="ambient-grid" />
       <motion.span
-        className="ambient-line absolute left-[15vw] right-[15vw] top-24 h-px origin-center bg-gradient-to-r from-transparent via-emerald-300/50 to-transparent"
-        animate={reduceMotion ? {} : { opacity: [0.2, 0.55, 0.2], scaleX: [0.94, 1, 0.94] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        className="aurora-ribbon aurora-ribbon-a"
+        animate={reduceMotion ? {} : { x: ["-8%", "5%", "-8%"], y: [0, -28, 0], rotate: [-10, -7, -10] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="aurora-ribbon aurora-ribbon-b"
+        animate={reduceMotion ? {} : { x: ["6%", "-4%", "6%"], y: [0, 34, 0], rotate: [12, 8, 12] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.span
+        className="aurora-ribbon aurora-ribbon-c"
+        animate={reduceMotion ? {} : { x: ["-3%", "4%", "-3%"], y: [0, 18, 0], opacity: [0.28, 0.46, 0.28] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+      />
+      <motion.span
+        className="ambient-scanline"
+        animate={reduceMotion ? {} : { y: ["-10vh", "110vh"] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
       />
     </div>
   );
@@ -680,7 +686,7 @@ function Workflow({ project }) {
         </span>
         {project.workflow.map(([title, text], index) => (
           <motion.div key={title} className={`relative grid min-h-20 grid-cols-[54px_1fr] items-center gap-3 rounded-2xl border ${accent.border} ${accent.bgSoft} p-3`} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.06 }}>
-            <span className={`z-10 grid size-12 place-items-center rounded-2xl bg-white font-black ${accent.text} shadow-sm`}>{String(index + 1).padStart(2, "0")}</span>
+            <span className={`z-10 grid size-12 place-items-center rounded-2xl bg-gradient-to-br font-black shadow-lg ${accent.number}`}>{String(index + 1).padStart(2, "0")}</span>
             <span><strong className="block font-black">{title}</strong><small className="font-bold text-slate-500">{text}</small></span>
           </motion.div>
         ))}
