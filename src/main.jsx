@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import {
@@ -239,12 +239,20 @@ function App() {
   const [activeProject, setActiveProject] = useState(projects[0].id);
   const [lightbox, setLightbox] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 24, restDelta: 0.001 });
   const project = useMemo(() => projects.find((item) => item.id === activeProject) ?? projects[0], [activeProject]);
 
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => setLoading(false), reduceMotion ? 450 : 1650);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f7fbf9] text-slate-950">
+      <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
       <motion.div className="fixed left-0 top-0 z-[100] h-1 w-full origin-left bg-gradient-to-r from-emerald-500 via-teal-400 to-sky-500" style={{ scaleX }} />
       <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main>
@@ -259,6 +267,42 @@ function App() {
       <Footer />
       <AnimatePresence>{lightbox && <Lightbox item={lightbox} onClose={() => setLightbox(null)} />}</AnimatePresence>
     </div>
+  );
+}
+
+function LoadingScreen() {
+  const line = "React  Node.js  PostgreSQL  LINE LIFF  AI";
+
+  return (
+    <motion.div
+      className="portfolio-loader"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -28, filter: "blur(10px)" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      role="status"
+      aria-label="Loading portfolio"
+    >
+      <div className="loader-grid" aria-hidden="true" />
+      <motion.div className="loader-panel" initial={{ opacity: 0, y: 18, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
+        <div className="loader-orbit" aria-hidden="true">
+          <span className="loader-orbit-ring" />
+          <span className="loader-dot loader-dot-a" />
+          <span className="loader-dot loader-dot-b" />
+          <span className="loader-dot loader-dot-c" />
+          <motion.div className="loader-mark" initial={{ rotate: -10, scale: 0.92 }} animate={{ rotate: 0, scale: 1 }} transition={{ duration: 0.5, delay: 0.15 }}>
+            KM
+          </motion.div>
+        </div>
+        <div className="loader-copy">
+          <p>Kritsanapong Maneesri</p>
+          <h2>Building portfolio system</h2>
+          <span>{line}</span>
+        </div>
+        <div className="loader-progress" aria-hidden="true">
+          <motion.span initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1] }} />
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
