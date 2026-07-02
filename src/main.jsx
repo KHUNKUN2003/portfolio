@@ -329,7 +329,6 @@ function BackgroundAccents() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className="aurora-mesh" />
-      <div className="aurora-flow" />
       <div className="ambient-grid" />
       <motion.span
         className="aurora-ribbon aurora-ribbon-a"
@@ -347,19 +346,9 @@ function BackgroundAccents() {
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
       />
       <motion.span
-        className="aurora-beam aurora-beam-a"
-        animate={reduceMotion ? {} : { x: ["-18vw", "18vw", "-18vw"], opacity: [0.1, 0.28, 0.1] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.span
-        className="aurora-beam aurora-beam-b"
-        animate={reduceMotion ? {} : { x: ["16vw", "-14vw", "16vw"], opacity: [0.08, 0.22, 0.08] }}
-        transition={{ duration: 17, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
-      />
-      <motion.span
         className="ambient-scanline"
         animate={reduceMotion ? {} : { y: ["-10vh", "110vh"] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
       />
     </div>
   );
