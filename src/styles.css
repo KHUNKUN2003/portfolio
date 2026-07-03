@@ -30,78 +30,77 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-.aurora-mesh,
-.ambient-grid,
-.aurora-ribbon,
-.ambient-scanline {
+.tech-grid-base,
+.tech-grid-fine,
+.tech-grid-glow,
+.tech-grid-scan,
+.tech-grid-pulse {
   position: absolute;
   pointer-events: none;
 }
 
-.aurora-mesh {
-  inset: -18%;
-  opacity: .32;
-  background:
-    radial-gradient(circle at 50% 18%, rgba(16, 185, 129, .11), transparent 34%),
-    radial-gradient(circle at 50% 68%, rgba(14, 165, 233, .05), transparent 32%),
-    linear-gradient(180deg, rgba(255, 255, 255, .92), transparent 48%, rgba(236, 253, 245, .42));
-  background-size: 130% 130%, 125% 125%, 100% 100%;
-  filter: blur(.2px);
-  animation: aurora-mesh 24s ease-in-out infinite alternate;
-}
-
-.ambient-grid {
-  inset: 0;
-  opacity: .18;
+.tech-grid-base,
+.tech-grid-fine {
+  inset: -80px;
+  opacity: .24;
   background-image:
-    linear-gradient(rgba(6, 78, 59, .035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 78, 59, .035) 1px, transparent 1px);
+    linear-gradient(rgba(6, 78, 59, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 78, 59, .07) 1px, transparent 1px);
   background-position: 0 0;
-  background-size: 64px 64px;
-  mask-image: linear-gradient(180deg, transparent, black 18%, black 74%, transparent);
-  animation: ambient-grid-drift 36s linear infinite;
+  background-size: 76px 76px;
+  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 76%, transparent 100%);
+  transform: perspective(900px) rotateX(0.001deg);
+  animation: tech-grid-drift 34s linear infinite;
+  will-change: background-position;
 }
 
-.aurora-ribbon {
-  height: 24vh;
-  width: 86vw;
-  border-radius: 999px;
-  filter: blur(46px);
-  mix-blend-mode: multiply;
-  opacity: .2;
-  transform-origin: center;
+.tech-grid-fine {
+  opacity: .14;
+  background-image:
+    linear-gradient(rgba(20, 184, 166, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, .055) 1px, transparent 1px);
+  background-size: 19px 19px;
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+
+.tech-grid-glow {
+  inset: -12%;
+  opacity: .45;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(16, 185, 129, .12), transparent 32%),
+    radial-gradient(circle at 50% 72%, rgba(14, 165, 233, .055), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, .92), transparent 48%, rgba(236, 253, 245, .5));
+  background-size: 130% 130%, 120% 120%, 100% 100%;
+  animation: tech-grid-glow 22s ease-in-out infinite alternate;
+}
+
+.tech-grid-scan {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 72px;
+  opacity: .24;
+  background:
+    linear-gradient(180deg, transparent, rgba(16, 185, 129, .14), transparent),
+    linear-gradient(90deg, transparent, rgba(14, 165, 233, .16), rgba(16, 185, 129, .2), transparent);
+  filter: blur(.2px);
+  mask-image: linear-gradient(90deg, transparent, black 18%, black 82%, transparent);
   will-change: transform, opacity;
 }
 
-.aurora-ribbon-a {
-  left: -18vw;
-  top: 8vh;
-  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, .22), rgba(45, 212, 191, .12), transparent);
-}
-
-.aurora-ribbon-b {
-  right: -24vw;
-  top: 38vh;
-  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, .1), rgba(132, 204, 22, .1), transparent);
-}
-
-.aurora-ribbon-c {
-  left: 8vw;
-  bottom: 4vh;
-  width: 72vw;
+.tech-grid-pulse {
+  left: -10vw;
+  top: 14vh;
+  width: 120vw;
   height: 20vh;
-  background: linear-gradient(90deg, transparent, rgba(52, 211, 153, .12), rgba(255, 255, 255, .22), transparent);
-}
-
-.ambient-scanline {
-  left: 12vw;
-  right: 12vw;
-  top: 0;
-  height: 1px;
-  opacity: .24;
-  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, .36), rgba(14, 165, 233, .16), transparent);
-  box-shadow: 0 0 22px rgba(16, 185, 129, .16);
-  will-change: transform;
+  opacity: .1;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(236, 253, 245, .72), rgba(16, 185, 129, .12), transparent);
+  filter: blur(28px);
+  mix-blend-mode: multiply;
+  transform: rotate(-8deg);
+  will-change: transform, opacity;
 }
 
 .hero-ambient {
@@ -492,10 +491,11 @@ a {
     animation: none;
   }
 
-  .aurora-mesh,
-  .ambient-grid,
-  .aurora-ribbon,
-  .ambient-scanline {
+  .tech-grid-base,
+  .tech-grid-fine,
+  .tech-grid-glow,
+  .tech-grid-scan,
+  .tech-grid-pulse {
     transform: none !important;
     animation: none !important;
   }
@@ -519,7 +519,7 @@ a {
   }
 }
 
-@keyframes aurora-mesh {
+@keyframes tech-grid-glow {
   0% {
     background-position: 0% 8%, 100% 28%, 0 0;
   }
@@ -531,11 +531,11 @@ a {
   }
 }
 
-@keyframes ambient-grid-drift {
+@keyframes tech-grid-drift {
   from {
     background-position: 0 0;
   }
   to {
-    background-position: 54px 54px;
+    background-position: 76px 76px;
   }
 }

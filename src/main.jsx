@@ -328,27 +328,18 @@ function BackgroundAccents() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-      <div className="aurora-mesh" />
-      <div className="ambient-grid" />
+      <div className="tech-grid-base" />
+      <div className="tech-grid-fine" />
+      <div className="tech-grid-glow" />
       <motion.span
-        className="aurora-ribbon aurora-ribbon-a"
-        animate={reduceMotion ? {} : { x: ["-8%", "5%", "-8%"], y: [0, -28, 0], rotate: [-10, -7, -10] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="tech-grid-scan"
+        animate={reduceMotion ? {} : { y: ["-16vh", "116vh"], opacity: [0, 0.28, 0] }}
+        transition={{ duration: 13, repeat: Infinity, ease: "linear" }}
       />
       <motion.span
-        className="aurora-ribbon aurora-ribbon-b"
-        animate={reduceMotion ? {} : { x: ["6%", "-4%", "6%"], y: [0, 34, 0], rotate: [12, 8, 12] }}
+        className="tech-grid-pulse"
+        animate={reduceMotion ? {} : { x: ["-14vw", "14vw", "-14vw"], opacity: [0.06, 0.12, 0.06] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.span
-        className="aurora-ribbon aurora-ribbon-c"
-        animate={reduceMotion ? {} : { x: ["-3%", "4%", "-3%"], y: [0, 18, 0], opacity: [0.28, 0.46, 0.28] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-      />
-      <motion.span
-        className="ambient-scanline"
-        animate={reduceMotion ? {} : { y: ["-10vh", "110vh"] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
       />
     </div>
   );
