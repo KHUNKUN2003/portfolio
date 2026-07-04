@@ -600,7 +600,7 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
   return (
     <Section id="projects" eyebrow="Featured Projects" title="Selected systems built for real business workflows">
       <Reveal className="mt-8">
-        <div className="flex gap-2 overflow-x-auto px-1 py-2">
+        <div className="project-tab-row flex gap-2 overflow-x-auto px-1 py-2">
           {projects.map((item) => {
             const ItemIcon = item.icon;
             const selected = item.id === activeProject;
@@ -616,7 +616,7 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
       <AnimatePresence mode="wait">
         <motion.div key={project.id} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.35 }}>
           <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_.75fr]">
-            <motion.article className={`lift-card relative overflow-hidden rounded-[2rem] border ${accent.border} bg-white/84 p-6 shadow-2xl shadow-emerald-950/7`} whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
+            <motion.article className={`lift-card relative overflow-hidden rounded-[2rem] border ${accent.border} bg-white/92 p-6 shadow-2xl shadow-emerald-950/7 backdrop-blur-sm`} whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
               <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent.gradient}`} />
               <div className="flex items-center gap-4">
                 <div className={`grid size-16 place-items-center rounded-3xl bg-gradient-to-br ${accent.gradient} text-white shadow-xl`}>
@@ -646,7 +646,7 @@ function Projects({ activeProject, setActiveProject, project, setLightbox }) {
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {project.stacks.map(([title, items]) => (
-              <motion.article key={title} className={`lift-card rounded-3xl border ${accent.border} bg-white/84 p-5 shadow-xl shadow-emerald-950/5`} whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
+              <motion.article key={title} className={`lift-card rounded-3xl border ${accent.border} bg-white/92 p-5 shadow-xl shadow-emerald-950/5 backdrop-blur-sm`} whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 260, damping: 24 }}>
                 <h4 className={`mb-4 font-black ${accent.text}`}>{title}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   {items.map((item) => <span key={item} className={`rounded-2xl border ${accent.border} bg-white px-3 py-2 text-xs font-black text-slate-600`}>{item}</span>)}
@@ -670,7 +670,7 @@ function Workflow({ project }) {
   const reduceMotion = useReducedMotion();
   const lineDuration = 2.8;
   return (
-    <article className={`rounded-[2rem] border ${accent.border} bg-white/84 p-6 shadow-2xl shadow-emerald-950/7`}>
+    <article className={`rounded-[2rem] border ${accent.border} bg-white/92 p-6 shadow-2xl shadow-emerald-950/7 backdrop-blur-sm`}>
       <h3 className="mb-4 text-xl font-black">System Workflow</h3>
       <div className="relative grid gap-3">
         <span className={`absolute bottom-8 left-6 top-8 w-px overflow-hidden bg-gradient-to-b from-transparent ${accent.viaSoft} to-transparent`}>
@@ -709,7 +709,7 @@ function Workflow({ project }) {
 function Showcase({ project, setLightbox }) {
   const accent = accentClass[project.accent] ?? accentClass.emerald;
   return (
-    <div className={`mt-5 grid gap-6 overflow-hidden rounded-[2rem] border ${accent.border} bg-white/70 p-5 shadow-2xl shadow-emerald-950/7 md:p-6 lg:grid-cols-[.38fr_1fr]`}>
+    <div className={`mt-5 grid gap-6 overflow-hidden rounded-[2rem] border ${accent.border} bg-white/88 p-5 shadow-2xl shadow-emerald-950/7 backdrop-blur-sm md:p-6 lg:grid-cols-[.38fr_1fr]`}>
       <div className="self-center">
         <p className={`mb-3 text-sm font-black ${accent.text}`}>Product Screens</p>
         <h3 className="text-balance text-3xl font-black leading-tight md:text-4xl">
@@ -743,7 +743,7 @@ function Showcase({ project, setLightbox }) {
 
 function Detail({ title, text, tone = "emerald", delay }) {
   const accent = accentClass[tone] ?? accentClass.emerald;
-  return <Reveal delay={delay} className={`rounded-3xl border ${accent.border} bg-white/82 p-5 shadow-xl shadow-emerald-950/5`}><h4 className={`font-black ${accent.text}`}>{title}</h4><p className="mt-3 text-sm font-semibold leading-7 text-slate-600">{text}</p></Reveal>;
+  return <Reveal delay={delay} className={`rounded-3xl border ${accent.border} bg-white/92 p-5 shadow-xl shadow-emerald-950/5 backdrop-blur-sm`}><h4 className={`font-black ${accent.text}`}>{title}</h4><p className="mt-3 text-sm font-semibold leading-7 text-slate-600">{text}</p></Reveal>;
 }
 
 function Stack() {
@@ -751,7 +751,7 @@ function Stack() {
     <Section id="stack" eyebrow="Stack" title="Skills grouped for fullstack work">
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {Object.entries(skills).map(([group, items]) => (
-          <Reveal key={group} className={`rounded-3xl border border-emerald-100 bg-white/82 p-6 shadow-xl shadow-emerald-950/5 ${group === "Additional Strengths" ? "md:col-span-2" : ""}`}>
+          <Reveal key={group} className={`rounded-3xl border border-emerald-100 bg-white/92 p-6 shadow-xl shadow-emerald-950/5 backdrop-blur-sm ${group === "Additional Strengths" ? "md:col-span-2" : ""}`}>
             <h3 className="mb-4 text-xl font-black">{group}</h3>
             <div className="flex flex-wrap gap-2">{items.map((item) => <Pill key={item}>{item}</Pill>)}</div>
           </Reveal>
@@ -774,7 +774,7 @@ function Experience() {
 
 function Timeline({ title, icon: Icon, items }) {
   return (
-    <Reveal className="rounded-[2rem] border border-emerald-100 bg-white/82 p-6 shadow-xl shadow-emerald-950/5">
+    <Reveal className="rounded-[2rem] border border-emerald-100 bg-white/92 p-6 shadow-xl shadow-emerald-950/5 backdrop-blur-sm">
       <h3 className="mb-4 flex items-center gap-2 text-xl font-black"><Icon className="text-emerald-600" />{title}</h3>
       <ol className="grid gap-0">
         {items.map(([time, heading, body], index) => (
@@ -793,7 +793,7 @@ function Awards() {
     <Section id="awards" eyebrow="Awards" title="Programming, cloud computing, and innovation achievements">
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         {awards.map(([year, title, text], index) => (
-          <Reveal key={`${year}-${title}-${index}`} className="rounded-3xl border border-emerald-100 bg-white/82 p-5 shadow-xl shadow-emerald-950/5">
+          <Reveal key={`${year}-${title}-${index}`} className="rounded-3xl border border-emerald-100 bg-white/92 p-5 shadow-xl shadow-emerald-950/5 backdrop-blur-sm">
             <span className="rounded-full bg-emerald-50 px-3 py-2 text-xs font-black text-emerald-700">{year}</span>
             <h3 className="mt-5 font-black">{title}</h3>
             <p className="mt-3 text-sm leading-7 text-slate-500">{text}</p>
